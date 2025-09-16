@@ -1,7 +1,14 @@
-import axios, { AxiosResponse } from 'axios';
+/// <reference types="vite/client" />
+import axios from 'axios';
 import { User, Farm, Crop, Disease, SoilTest, WeatherData, MarketPrice } from '../types/api';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1';
+const API_BASE_URL = (() => {
+    const envUrl = import.meta.env.VITE_API_BASE_URL?.trim();
+    if (envUrl && envUrl !== '') {
+        return envUrl.endsWith('/') ? envUrl.slice(0, -1) : envUrl;
+    }
+    return 'http://localhost:8000/api/v1';
+})();
 
 // Create axios instance
 const apiClient = axios.create({
@@ -15,6 +22,9 @@ const apiClient = axios.create({
 apiClient.interceptors.request.use((config) => {
     const token = localStorage.getItem('accessToken');
     if (token) {
+        if (!config.headers) {
+            config.headers = {};
+        }
         config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
