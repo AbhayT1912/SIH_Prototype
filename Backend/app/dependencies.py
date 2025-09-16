@@ -7,7 +7,7 @@ from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 from .config import settings
 from .database import get_db
-from . import schemas
+from app.schemas.schemas import User, Token, TokenData
 
 # Password hashing
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -41,7 +41,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -
 async def get_current_user(
     token: str = Depends(oauth2_scheme),
     db: Session = Depends(get_db)
-) -> schemas.User:
+) -> User:
     """Get current authenticated user from JWT token."""
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -67,16 +67,20 @@ async def get_current_user(
     # return user
     
     # For now, return mock user
-    return schemas.User(
+    return User(
         id=user_id,
         email="farmer@example.com",
         full_name="Demo Farmer",
-        disabled=False
+        phone="1234567890",  # Adding required fields
+        language_preference="en",
+        is_active=True,
+        created_at=datetime.utcnow(),
+        updated_at=datetime.utcnow()
     )
 
 async def get_current_active_user(
-    current_user: schemas.User = Depends(get_current_user)
-) -> schemas.User:
+    current_user: User = Depends(get_current_user)
+) -> User:
     """Get current active user."""
     if current_user.disabled:
         raise HTTPException(

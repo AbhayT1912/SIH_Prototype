@@ -4,6 +4,7 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { useLanguage, SpeakerButton } from "./language-context";
 import { motion } from "motion/react";
+import { WeatherCard } from "./weather-card";
 import { 
   AlertTriangle, 
   Droplets, 
@@ -24,6 +25,16 @@ export function BalancedDashboard({ onNavigate }: { onNavigate?: (page: string) 
   
   return (
     <div className="max-w-7xl mx-auto p-6">      
+      {/* Weather Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="mb-6"
+      >
+        <WeatherCard />
+      </motion.div>
+      
       {/* Main Dashboard Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         

@@ -1,14 +1,13 @@
 from pydantic_settings import BaseSettings
 from typing import List
+import json
 
 class Settings(BaseSettings):
     # Application Settings
     APP_NAME: str = "FasalSaathi API"
     VERSION: str = "1.0.0"
     DEBUG: bool = False
-    
-    # API Settings
-    API_PREFIX: str = "/api"
+    API_PREFIX: str = "/api/v1"
     
     # Security Settings
     SECRET_KEY: str
@@ -31,9 +30,12 @@ class Settings(BaseSettings):
     WEATHER_API_KEY: str = "8f945372fa522a39510cade87c27e8bf"
     SOIL_API_KEY: str = ""
     
-    class Config:
-        env_file = ".env"
-        case_sensitive = True
+    model_config = {
+        "env_file": ".env",
+        "case_sensitive": True,
+        "env_file_encoding": "utf-8",
+        "extra": "allow"
+    }
 
 # Create global settings object
 settings = Settings()

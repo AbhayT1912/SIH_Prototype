@@ -142,18 +142,26 @@ export const cropApi = {
 
 // Weather API
 export const weatherApi = {
-    getCurrentWeather: (location: string) => 
-        apiClient.get<WeatherData>(`/weather/current/${location}`),
+    getCurrentWeather: (lat: number = 22.62, lon: number = 77.76) => 
+        apiClient.get<any>('/weather/current', { params: { lat, lon } })
+            .then(response => response.data)
+            .catch((error: AxiosError<ApiError>) => {
+                console.error('Error fetching weather:', error.response?.data?.detail);
+                throw error;
+            }),
     
-    getWeatherForecast: (location: string, days: number = 7) => 
-        apiClient.get<WeatherData[]>(`/weather/forecast/${location}`, {
-            params: { days }
-        }),
-    
-    getWeatherHistory: (location: string, days: number = 30) => 
-        apiClient.get<WeatherData[]>(`/weather/history/${location}`, {
-            params: { days }
+    getWeatherForecast: (lat: number = 22.62, lon: number = 77.76, days: number = 7) => 
+        apiClient.get<any>('/weather/forecast', { 
+            params: { lat, lon, days } 
         })
+            .then(response => response.data)
+            .catch((error: AxiosError<ApiError>) => {
+                console.error('Error fetching forecast:', error.response?.data?.detail);
+                throw error;
+            }),
+    
+    getWeatherIcon: (iconCode: string) =>
+        `https://openweathermap.org/img/wn/${iconCode}@2x.png`
 };
 
 // Market API

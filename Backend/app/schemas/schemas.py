@@ -82,7 +82,7 @@ class User(UserBase):
     updated_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class Farm(FarmBase):
     id: int
@@ -91,7 +91,7 @@ class Farm(FarmBase):
     updated_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class Crop(CropBase):
     id: int
@@ -99,7 +99,7 @@ class Crop(CropBase):
     updated_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class Disease(DiseaseBase):
     id: int
@@ -108,7 +108,7 @@ class Disease(DiseaseBase):
     updated_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class SoilTest(SoilTestBase):
     id: int
@@ -117,14 +117,14 @@ class SoilTest(SoilTestBase):
     updated_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class WeatherData(WeatherDataBase):
     id: int
     created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class MarketPrice(MarketPriceBase):
     id: int
@@ -132,7 +132,7 @@ class MarketPrice(MarketPriceBase):
     created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 # Token Schemas
 class Token(BaseModel):

@@ -1,64 +1,48 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from typing import List, Annotated
+from typing import List, Annotated, Dict, Any
 from datetime import datetime, timedelta
 
 from app.database import get_db
 from app.dependencies import get_current_active_user
 from app.models.models import User, WeatherData
 from app.schemas.schemas import WeatherDataCreate, WeatherData as WeatherDataSchema
+from app.services.weather_service import weather_service
 
 router = APIRouter(prefix="/weather", tags=["weather"])
 
-@router.get("/current/{location}", response_model=WeatherDataSchema)
+@router.get("/current", response_model=Dict[str, Any])
 async def get_current_weather(
-    location: str,
     current_user: Annotated[User, Depends(get_current_active_user)],
-    db: Session = Depends(get_db)
+    lat: float = 22.62,
+    lon: float = 77.76
 ):
-    """Get current weather data for a location."""
-    # Get most recent weather data for the location
-    weather = db.query(WeatherData)\
-        .filter(WeatherData.location == location)\
-        .order_by(WeatherData.date.desc())\
-        .first()
-    
-    if weather is None:
+    """Get current weather data for coordinates (default: Itarsi, MP)"""
+    try:
+        weather_data = await weather_service.get_current_weather(lat, lon)
+        return weather_data
+    except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Weather data not found for this location"
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e)
         )
-    
-    # Check if weather data is not too old (e.g., more than 1 hour old)
-    if weather.date < datetime.utcnow() - timedelta(hours=1):
-        # TODO: Implement weather API call to update data
-        pass
-    
-    return weather
 
-@router.get("/forecast/{location}", response_model=List[WeatherDataSchema])
+@router.get("/forecast", response_model=Dict[str, Any])
 async def get_weather_forecast(
-    location: str,
     current_user: Annotated[User, Depends(get_current_active_user)],
-    db: Session = Depends(get_db),
+    lat: float = 22.62,
+    lon: float = 77.76,
     days: int = 7
 ):
-    """Get weather forecast for a location."""
-    # Get forecast data for the specified number of days
-    forecast = db.query(WeatherData)\
-        .filter(
-            WeatherData.location == location,
-            WeatherData.date >= datetime.utcnow(),
-            WeatherData.date <= datetime.utcnow() + timedelta(days=days)
-        )\
-        .order_by(WeatherData.date.asc())\
-        .all()
-    
-    if not forecast:
-        # TODO: Implement weather API call to get forecast
-        pass
-    
-    return forecast
+    """Get weather forecast for coordinates (default: Itarsi, MP)"""
+    try:
+        forecast_data = await weather_service.get_forecast(lat, lon, days)
+        return forecast_data
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e)
+        )
 
 @router.get("/history/{location}", response_model=List[WeatherDataSchema])
 async def get_weather_history(
