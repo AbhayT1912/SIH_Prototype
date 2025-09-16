@@ -32,7 +32,7 @@ app.add_middleware(
 )
 
 # Include routers with prefixes
-app.include_router(auth.router, prefix="/api/auth", tags=["Authentication"])
+app.include_router(auth.router, prefix=f"{settings.API_PREFIX}/auth", tags=["Authentication"])
 app.include_router(users.router, prefix="/api/users", tags=["Users"])
 app.include_router(farms.router, prefix="/api/farms", tags=["Farm Management"])
 app.include_router(crops.router, prefix="/api/crops", tags=["Crop Management"])

@@ -1,6 +1,17 @@
 /// <reference types="vite/client" />
-import axios from 'axios';
+import axios, { 
+    AxiosError, 
+    AxiosResponse, 
+    InternalAxiosRequestConfig,
+    AxiosRequestConfig
+} from 'axios';
 import { User, Farm, Crop, Disease, SoilTest, WeatherData, MarketPrice } from '../types/api';
+
+// Error interface for backend responses
+interface ApiError {
+    detail: string;
+    status_code?: number;
+}
 
 const API_BASE_URL = (() => {
     const envUrl = import.meta.env.VITE_API_BASE_URL?.trim();
@@ -19,16 +30,56 @@ const apiClient = axios.create({
 });
 
 // Add auth token to requests
-apiClient.interceptors.request.use((config) => {
-    const token = localStorage.getItem('accessToken');
-    if (token) {
-        if (!config.headers) {
-            config.headers = {};
+apiClient.interceptors.request.use(
+    (config: InternalAxiosRequestConfig) => {
+        const token = localStorage.getItem('accessToken');
+        if (token) {
+            config.headers.set('Authorization', `Bearer ${token}`);
         }
-        config.headers.Authorization = `Bearer ${token}`;
+        return config;
+    },
+    (error: AxiosError) => {
+        return Promise.reject(error);
     }
-    return config;
-});
+);
+
+// Add response interceptor for error handling
+apiClient.interceptors.response.use(
+    (response: AxiosResponse) => response,
+    async (error: AxiosError<ApiError>) => {
+        const originalRequest = error.config as AxiosRequestConfig & { _retry?: boolean };
+
+        // Handle 401 Unauthorized errors
+        if (error.response?.status === 401 && !originalRequest._retry) {
+            originalRequest._retry = true;
+
+            // Clear token and redirect to login if refresh fails
+            const handleAuthError = () => {
+                localStorage.removeItem('accessToken');
+                window.location.href = '/login';
+                return Promise.reject(error);
+            };
+
+            // Try to refresh token
+            try {
+                // TODO: Implement proper token refresh mechanism
+                // const response = await authApi.refreshToken();
+                // const { access_token } = response.data;
+                // localStorage.setItem('accessToken', access_token);
+                // originalRequest.headers.Authorization = `Bearer ${access_token}`;
+                // return apiClient(originalRequest);
+                return handleAuthError();
+            } catch (refreshError) {
+                return handleAuthError();
+            }
+        }
+
+        // Handle other errors
+        const errorMessage = error.response?.data?.detail || error.message;
+        console.error('API Error:', errorMessage);
+        return Promise.reject(error);
+    }
+);
 
 // Auth API
 export const authApi = {
@@ -108,15 +159,30 @@ export const weatherApi = {
 // Market API
 export const marketApi = {
     getCurrentPrices: (params?: { market?: string, crop_id?: number }) => 
-        apiClient.get<MarketPrice[]>('/market/prices/current', { params }),
+        apiClient.get<MarketPrice[]>('/market/prices/current', { params })
+            .then(response => response.data)
+            .catch((error: AxiosError<ApiError>) => {
+                console.error('Error fetching current prices:', error.response?.data?.detail);
+                throw error;
+            }),
     
     getPriceHistory: (cropId: number, days: number = 30) => 
         apiClient.get<MarketPrice[]>(`/market/prices/history/${cropId}`, {
             params: { days }
-        }),
+        })
+            .then(response => response.data)
+            .catch((error: AxiosError<ApiError>) => {
+                console.error('Error fetching price history:', error.response?.data?.detail);
+                throw error;
+            }),
     
     getMarkets: () => 
-        apiClient.get<string[]>('/market/markets'),
+        apiClient.get<string[]>('/market/markets')
+            .then(response => response.data)
+            .catch((error: AxiosError<ApiError>) => {
+                console.error('Error fetching markets:', error.response?.data?.detail);
+                throw error;
+            }),
     
     getMarketTrends: (cropId: number) => 
         apiClient.get<{
@@ -126,6 +192,11 @@ export const marketApi = {
             price_change: number;
             forecast: string;
         }>(`/market/trends/${cropId}`)
+            .then(response => response.data)
+            .catch((error: AxiosError<ApiError>) => {
+                console.error('Error fetching market trends:', error.response?.data?.detail);
+                throw error;
+            })
 };
 
 export default {

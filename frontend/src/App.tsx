@@ -39,6 +39,8 @@ import {
   Package,
   Target
 } from "lucide-react";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
 type Page = 'onboarding' | 'dashboard' | 'calendar' | 'market' | 'plant-analysis' | 'my-farm' | 'yield-prediction' | 'crop-recommendations' | 'inventory';
 type Language = 'hi' | 'en' | 'mr';
@@ -340,3 +342,14 @@ function TopNavigationWithRouter({ currentPage, onNavigate }: {
     </nav>
   );
 }
+
+// Main App component with routing
+const MainApp: React.FC = () => {
+  return (
+    <div className="app">
+      <Routes>
+        <Route path="/" element={<div>Welcome to FasalSaathi</div>} />
+      </Routes>
+    </div>
+  );
+};

@@ -28,7 +28,7 @@ class Settings(BaseSettings):
     MODEL_PATH: str = "app/ml_models"
     
     # External APIs
-    WEATHER_API_KEY: str = ""
+    WEATHER_API_KEY: str = "8f945372fa522a39510cade87c27e8bf"
     SOIL_API_KEY: str = ""
     
     class Config:
