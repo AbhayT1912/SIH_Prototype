@@ -1,4 +1,11 @@
 from logging.config import fileConfig
+import os
+import sys
+from pathlib import Path
+
+# Add the Backend directory to Python path
+backend_path = str(Path(__file__).resolve().parents[1])
+sys.path.append(backend_path)
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool

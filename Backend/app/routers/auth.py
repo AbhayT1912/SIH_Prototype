@@ -1,3 +1,4 @@
+import logging
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from typing import Annotated
@@ -15,12 +16,78 @@ from app.dependencies import (
 from app.models.models import User
 from app.schemas.schemas import UserCreate, User as UserSchema, Token
 
+logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/auth", tags=["authentication"])
 settings = Settings()
 
 @router.post("/register", response_model=UserSchema)
 async def register_user(user: UserCreate, db: Session = Depends(get_db)):
     """Register a new user."""
+    logger.debug("Registration request received: %s", user.model_dump())
+    try:
+        # Check if user exists
+        logger.debug("Checking if user exists...")
+        if db.query(User).count() > 0:
+            logger.warning("Users table exists and has records")
+        else:
+            logger.warning("Users table exists but is empty")
+
+        db_user = db.query(User).filter(
+            (User.email == user.email) | (User.phone == user.phone)
+        ).first()
+        if db_user:
+            logger.warning("User already exists")
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Email or phone already registered"
+            )
+
+        # Create new user
+        logger.debug("Creating new user...")
+        try:
+            hashed_password = get_password_hash(user.password)
+            logger.debug("Password hashed successfully")
+        except Exception as hash_error:
+            logger.error("Error hashing password: %s", str(hash_error))
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Error processing password"
+            )
+
+        db_user = User(
+            email=user.email,
+            phone=user.phone,
+            full_name=user.full_name,
+            hashed_password=hashed_password,
+            language_preference=user.language_preference
+        )
+        
+        logger.debug("Adding user to database...")
+        try:
+            db.add(db_user)
+            logger.debug("User added to session")
+            db.commit()
+            logger.debug("Changes committed to database")
+            db.refresh(db_user)
+            logger.debug("User object refreshed")
+            logger.info("User successfully registered")
+            return db_user
+        except Exception as db_error:
+            logger.error("Database error: %s", str(db_error))
+            db.rollback()
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Error saving to database"
+            )
+    except HTTPException:
+        logger.error("Known error occurred")
+        raise
+    except Exception as e:
+        logger.error("Unexpected error during registration: %s", str(e))
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="An unexpected error occurred"
+        )
     # Check if user exists
     db_user = db.query(User).filter(
         (User.email == user.email) | (User.phone == user.phone)

@@ -10,18 +10,17 @@ class Settings(BaseSettings):
     API_PREFIX: str = "/api/v1"
     
     # Security Settings
-    SECRET_KEY: str
+    SECRET_KEY: str = "e89f9336e84e47e49369470d5b589d31e008c7a40774c8139929af3f79021a9b"
     JWT_ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
     # Database Settings
-    DATABASE_URL: str
+    DATABASE_URL: str = "sqlite:///./data/fasalsaathi.db"
     
     # CORS Settings
-    CORS_ORIGINS: List[str] = [
-        "http://localhost:3000",  # Development frontend
-        "http://localhost:5173",  # Vite dev server
-    ]
+    CORS_ORIGINS: List[str] = ["*"]  # Allow all origins
+    HOST: str = "127.0.0.1"
+    PORT: int = 8088
     
     # ML Model Settings
     MODEL_PATH: str = "app/ml_models"

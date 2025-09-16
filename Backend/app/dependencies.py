@@ -60,22 +60,22 @@ async def get_current_user(
     except JWTError:
         raise credentials_exception
         
-    # TODO: Implement user lookup from database
-    # user = crud.get_user(db, user_id=user_id)
-    # if user is None:
-    #     raise credentials_exception
-    # return user
+    # Look up user in database
+    from app.models.models import User as UserModel
     
-    # For now, return mock user
+    user = db.query(UserModel).filter(UserModel.id == int(user_id)).first()
+    if user is None:
+        raise credentials_exception
+        
     return User(
-        id=user_id,
-        email="farmer@example.com",
-        full_name="Demo Farmer",
-        phone="1234567890",  # Adding required fields
-        language_preference="en",
-        is_active=True,
-        created_at=datetime.utcnow(),
-        updated_at=datetime.utcnow()
+        id=user.id,
+        email=user.email,
+        full_name=user.full_name,
+        phone=user.phone,
+        language_preference=user.language_preference,
+        is_active=user.is_active,
+        created_at=user.created_at,
+        updated_at=user.updated_at
     )
 
 async def get_current_active_user(
