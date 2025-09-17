@@ -51,7 +51,7 @@ export function CropRecommendationsPage() {
       id: '1',
       name: 'Wheat',
       nameHindi: 'गेहूं',
-      image: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGVhdCUyMGZpZWxkJTIwaW5kaWF8ZW58MXx8fHwxNzU3OTUwMjMyfDA&ixlib=rb-4.1.0&q=80&w=300',
+      image: 'https://media.gettyimages.com/id/171553200/photo/wheat-berries-background.jpg?s=612x612&w=0&k=20&c=907B7IcP8MieoXvLzLILSqy05gTjehDBcSb-R2Wzmj4=',
       profitMargin: 65000,
       estimatedYield: '22-24 क्विंटल/एकड़',
       waterRequirement: 'medium',
@@ -68,7 +68,7 @@ export function CropRecommendationsPage() {
       id: '2',
       name: 'Chickpea',
       nameHindi: 'चना',
-      image: 'https://images.unsplash.com/photo-1615485500704-8e990f9900f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlja3BlYSUyMGZpZWxkfGVufDF8fHx8MTc1Nzk1MDIzMnww&ixlib=rb-4.1.0&q=80&w=300',
+      image: 'https://media.gettyimages.com/id/1942086498/photo/full-frame-macro-shot-of-chickpeas-background-food-texture.jpg?s=612x612&w=0&k=20&c=zLjXaUvILVOIqYU8cxgVERW4N4UJ45RmZfJce5-EJ3w=',
       profitMargin: 55000,
       estimatedYield: '12-15 क्विंटल/एकड़',
       waterRequirement: 'low',
@@ -85,7 +85,7 @@ export function CropRecommendationsPage() {
       id: '3',
       name: 'Mustard',
       nameHindi: 'सरसों',
-      image: 'https://images.unsplash.com/photo-1678720178659-0f1ad1ac5f5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtdXN0YXJkJTIwZmllbGR8ZW58MXx8fHwxNzU3OTUwMjMyfDA&ixlib=rb-4.1.0&q=80&w=300',
+      image: 'https://media.gettyimages.com/id/1479259505/photo/mustard-seeds.jpg?s=612x612&w=0&k=20&c=2XYQwRaYZy7Su26PCqOaFSn7jkL347-zq4LpPbYkOhQ=',
       profitMargin: 48000,
       estimatedYield: '18-20 क्विंटल/एकड़',
       waterRequirement: 'low',
@@ -102,7 +102,7 @@ export function CropRecommendationsPage() {
       id: '4',
       name: 'Maize',
       nameHindi: 'मक्का',
-      image: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYWl6ZSUyMGZpZWxkJTIwaW5kaWF8ZW58MXx8fHwxNzU3OTUwMjMyfDA&ixlib=rb-4.1.0&q=80&w=300',
+      image: 'https://media.gettyimages.com/id/157608978/photo/corn.jpg?s=612x612&w=0&k=20&c=X6MWiwZw-qTF4NKW3KmPx9kcVDJSSmhaC5xztgsd9Ls=',
       profitMargin: 72000,
       estimatedYield: '25-30 क्विंटल/एकड़',
       waterRequirement: 'medium',
@@ -119,7 +119,7 @@ export function CropRecommendationsPage() {
       id: '5',
       name: 'Potato',
       nameHindi: 'आलू',
-      image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3RhdG8lMjBmaWVsZCUyMGluZGlhfGVufDF8fHx8MTc1Nzk1MDIzMnww&ixlib=rb-4.1.0&q=80&w=300',
+      image: 'https://media.gettyimages.com/id/1224918845/photo/farmers-market-organic-potatoes.jpg?s=612x612&w=0&k=20&c=OKNglpi8Cc1IG78-jXiws2E-8qNKb7dJGB2nXvdncfM=',
       profitMargin: 85000,
       estimatedYield: '200-250 क्विंटल/एकड़',
       waterRequirement: 'high',
@@ -136,7 +136,7 @@ export function CropRecommendationsPage() {
       id: '6',
       name: 'Onion',
       nameHindi: 'प्याज',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvbmlvbiUyMGZpZWxkfGVufDF8fHx8MTc1Nzk1MDIzMnww&ixlib=rb-4.1.0&q=80&w=300',
+      image: 'https://media.gettyimages.com/id/171158822/photo/red-onions-background.jpg?s=612x612&w=0&k=20&c=-jkt0464Xku9H0_eSrcz6RJc8TqeQwUFNI2AF9oFGL8=',
       profitMargin: 58000,
       estimatedYield: '150-180 क्विंटल/एकड़',
       waterRequirement: 'medium',
@@ -148,6 +148,109 @@ export function CropRecommendationsPage() {
       investment: 35000,
       riskLevel: 'medium',
       description: 'निरंतर मांग, अच्छी भंडारण क्षमता'
+    },
+    // --- Added Crops Start Here ---
+    {
+      id: '7',
+      name: 'Soybean',
+      nameHindi: 'सोयाबीन',
+      image: 'https://media.gettyimages.com/id/184878412/photo/soybean.jpg?s=612x612&w=0&k=20&c=y2ErWVIJEIZ2o_O2YGjfLHePuMLyRwf_5_felYaD-Qc=',
+      profitMargin: 60000,
+      estimatedYield: '10-12 क्विंटल/एकड़',
+      waterRequirement: 'medium',
+      marketDemand: 'high',
+      climateSuitability: 'excellent',
+      season: 'खरीफ',
+      duration: '90-100 दिन',
+      difficulty: 'easy',
+      investment: 22000,
+      riskLevel: 'low',
+      description: 'प्रमुख खरीफ फसल, प्रोटीन का उत्कृष्ट स्रोत'
+    },
+    {
+      id: '8',
+      name: 'Cotton',
+      nameHindi: 'कपास',
+      image: 'https://media.gettyimages.com/id/157742904/photo/raw-cotton-crops.jpg?s=612x612&w=0&k=20&c=OYL5IiqwJI5nuq47ZL1nk3f0t6vHrMcq65Yx6_dbyYU=',
+      profitMargin: 75000,
+      estimatedYield: '10-15 क्विंटल/एकड़',
+      waterRequirement: 'medium',
+      marketDemand: 'high',
+      climateSuitability: 'good',
+      season: 'खरीफ',
+      duration: '150-180 दिन',
+      difficulty: 'hard',
+      investment: 40000,
+      riskLevel: 'high',
+      description: 'प्रमुख नकदी फसल, कपड़ा उद्योग के लिए महत्वपूर्ण'
+    },
+    {
+      id: '9',
+      name: 'Tomato',
+      nameHindi: 'टमाटर',
+      image: 'https://media.gettyimages.com/id/a0119-000144/photo/ripe-tomatoes.jpg?s=612x612&w=0&k=20&c=iDv9omfzHWKF9R3RmiUIjy_uLp0qT8M20wTaNZ_qdBk=',
+      profitMargin: 95000,
+      estimatedYield: '250-300 क्विंटल/एकड़',
+      waterRequirement: 'high',
+      marketDemand: 'high',
+      climateSuitability: 'good',
+      season: 'जायद',
+      duration: '100-120 दिन',
+      difficulty: 'medium',
+      investment: 50000,
+      riskLevel: 'high',
+      description: 'उच्च लाभ की संभावना, लेकिन मूल्य अस्थिरता का जोखिम'
+    },
+    {
+      id: '10',
+      name: 'Sugarcane',
+      nameHindi: 'गन्ना',
+      image: 'https://media.gettyimages.com/id/177596705/photo/peru-jilili-sicchez-sugarcane.jpg?s=612x612&w=0&k=20&c=OsMYNU6uPJQQl86-9mJWRjPZCL2VOfA7qFJGdyubCXA=',
+      profitMargin: 110000,
+      estimatedYield: '400-500 क्विंटल/एकड़',
+      waterRequirement: 'high',
+      marketDemand: 'high',
+      climateSuitability: 'excellent',
+      season: 'वार्षिक',
+      duration: '300-365 दिन',
+      difficulty: 'medium',
+      investment: 60000,
+      riskLevel: 'medium',
+      description: 'लंबी अवधि की फसल, चीनी मिलों से सुनिश्चित खरीद'
+    },
+    {
+      id: '11',
+      name: 'Paddy (Rice)',
+      nameHindi: 'धान',
+      image: 'https://media.gettyimages.com/id/1912193566/photo/full-frame-macro-shot-of-brown-rice-background-food-texture.jpg?s=612x612&w=0&k=20&c=nvV_LCnxO58IaJzxfJ3QDd201L9TAUMokIwK3amaAtk=',
+      profitMargin: 68000,
+      estimatedYield: '25-30 क्विंटल/एकड़',
+      waterRequirement: 'high',
+      marketDemand: 'high',
+      climateSuitability: 'good',
+      season: 'खरीफ',
+      duration: '120-140 दिन',
+      difficulty: 'medium',
+      investment: 32000,
+      riskLevel: 'medium',
+      description: 'भारत की मुख्य खाद्य फसल, सरकारी खरीद का लाभ'
+    },
+    {
+      id: '12',
+      name: 'Pomegranate',
+      nameHindi: 'अनार',
+      image: 'https://media.gettyimages.com/id/964956252/photo/close-up-of-pomegranate.jpg?s=612x612&w=0&k=20&c=iPJu_SvE-M3PQF8wFvf09-QjUd_HztJYQIMCNTCljtI=',
+      profitMargin: 250000,
+      estimatedYield: '80-100 क्विंटल/एकड़',
+      waterRequirement: 'low',
+      marketDemand: 'high',
+      climateSuitability: 'excellent',
+      season: 'वार्षिक',
+      duration: '3-4 वर्ष (फलने तक)',
+      difficulty: 'hard',
+      investment: 120000,
+      riskLevel: 'high',
+      description: 'उच्च मूल्य वाली बागवानी फसल, निर्यात की अच्छी संभावना'
     }
   ];
 
@@ -183,8 +286,8 @@ export function CropRecommendationsPage() {
   const sortedAndFilteredRecommendations = recommendations
     .filter(crop => {
       const matchesSearch = crop.nameHindi.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           crop.name.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesSeason = filterSeason === 'all' || crop.season === filterSeason;
+                            crop.name.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesSeason = filterSeason === 'all' || crop.season === filterSeason || crop.season === 'वार्षिक';
       return matchesSearch && matchesSeason;
     })
     .sort((a, b) => {
@@ -272,6 +375,7 @@ export function CropRecommendationsPage() {
                     <SelectItem value="खरीफ">खरीफ</SelectItem>
                     <SelectItem value="रबी">रबी</SelectItem>
                     <SelectItem value="जायद">जायद</SelectItem>
+                    <SelectItem value="वार्षिक">वार्षिक</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

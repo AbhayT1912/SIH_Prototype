@@ -45,7 +45,7 @@ export function MarketPage() {
   const [selectedCrop, setSelectedCrop] = useState<CropPrice | null>(null);
   const [sortBy, setSortBy] = useState<'name' | 'price' | 'change'>('change');
 
-  // Sample market data
+  // Sample market data with corrected image URLs
   const cropsData: CropPrice[] = [
     {
       id: '1',
@@ -56,7 +56,7 @@ export function MarketPage() {
       change: 50,
       changePercent: 0.96,
       market: 'Itarsi Mandi',
-      image: 'https://images.unsplash.com/photo-1605351793013-780532cbdb66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb3liZWFuJTIwY3JvcCUyMGZpZWxkJTIwaW5kaWF8ZW58MXx8fHwxNzU3OTUwMjMyfDA&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://media.gettyimages.com/id/184878412/photo/soybean.jpg?s=612x612&w=0&k=20&c=y2ErWVIJEIZ2o_O2YGjfLHePuMLyRwf_5_felYaD-Qc=',
       trending: true,
       category: 'Oil Seeds',
       unit: 'क्विंटल',
@@ -73,7 +73,7 @@ export function MarketPage() {
       change: -30,
       changePercent: -1.38,
       market: 'Itarsi Mandi',
-      image: 'https://images.unsplash.com/photo-1661762406676-8b21999d011e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGVhdCUyMG1haXplJTIwY29ybiUyMGNyb3BzfGVufDF8fHx8MTc1Nzk1MDIzNXww&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://media.gettyimages.com/id/171553200/photo/wheat-berries-background.jpg?s=612x612&w=0&k=20&c=907B7IcP8MieoXvLzLILSqy05gTjehDBcSb-R2Wzmj4=',
       trending: false,
       category: 'Cereals',
       unit: 'क्विंटल',
@@ -90,7 +90,7 @@ export function MarketPage() {
       change: 30,
       changePercent: 1.65,
       market: 'Itarsi Mandi',
-      image: 'https://images.unsplash.com/photo-1661762406676-8b21999d011e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGVhdCUyMG1haXplJTIwY29ybiUyMGNyb3BzfGVufDF8fHx8MTc1Nzk1MDIzNXww&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://media.gettyimages.com/id/1367012328/photo/corn-kernels-background.jpg?s=612x612&w=0&k=20&c=BhVNe_ZhsFUn-swNNS9sBT9-IO3Q_oFyc9QbeGVqCOo=',
       trending: true,
       category: 'Cereals',
       unit: 'क्विंटल',
@@ -107,13 +107,183 @@ export function MarketPage() {
       change: 50,
       changePercent: 0.74,
       market: 'Itarsi Mandi',
-      image: 'https://images.unsplash.com/photo-1661762406676-8b21999d011e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGVhdCUyMG1haXplJTIwY29ybiUyMGNyb3BzfGVufDF8fHx8MTc1Nzk1MDIzNXww&ixlib=rb-4.1.0&q=80&w=1080',
+      image: 'https://media.gettyimages.com/id/1350905388/photo/close-up-of-roasted-coffee-beans-on-table.jpg?s=612x612&w=0&k=20&c=erUXgH19718Q_R0TljP0mm9URC0Z6zjKm-ha9cieo38=',
       trending: false,
       category: 'Cash Crops',
       unit: 'क्विंटल',
       lastUpdated: '4 hours ago',
       weeklyData: [6700, 6720, 6750, 6740, 6760, 6750, 6800],
       monthlyData: [6500, 6600, 6700, 6750, 6800]
+    },
+    {
+      id: '5',
+      name: 'Gram',
+      nameHindi: 'चना',
+      currentPrice: 6300,
+      previousPrice: 6350,
+      change: -50,
+      changePercent: -0.79,
+      market: 'Itarsi Mandi',
+      image: 'https://media.gettyimages.com/id/1350905388/photo/close-up-of-roasted-coffee-beans-on-table.jpg?s=612x612&w=0&k=20&c=erUXgH19718Q_R0TljP0mm9URC0Z6zjKm-ha9cieo38=',
+      trending: false,
+      category: 'Pulses',
+      unit: 'क्विंटल',
+      lastUpdated: '30 mins ago',
+      weeklyData: [6400, 6380, 6350, 6360, 6340, 6350, 6300],
+      monthlyData: [6500, 6450, 6400, 6350, 6300]
+    },
+    {
+      id: '6',
+      name: 'Paddy (Basmati)',
+      nameHindi: 'धान (बासमती)',
+      currentPrice: 3800,
+      previousPrice: 3750,
+      change: 50,
+      changePercent: 1.33,
+      market: 'Itarsi Mandi',
+      image: 'https://media.gettyimages.com/id/1467955075/photo/mustard-seed-harvest.jpg?s=612x612&w=0&k=20&c=OMQvuuFdE3ck2F3tGrdPTCpLNIyDPAreJIRWGvxgIgg=',
+      trending: true,
+      category: 'Cereals',
+      unit: 'क्विंटल',
+      lastUpdated: '5 hours ago',
+      weeklyData: [3700, 3720, 3750, 3740, 3760, 3750, 3800],
+      monthlyData: [3600, 3650, 3700, 3750, 3800]
+    },
+    {
+      id: '7',
+      name: 'Mustard',
+      nameHindi: 'सरसों',
+      currentPrice: 5850,
+      previousPrice: 5800,
+      change: 50,
+      changePercent: 0.86,
+      market: 'Itarsi Mandi',
+      image: 'https://media.gettyimages.com/id/1467955075/photo/mustard-seed-harvest.jpg?s=612x612&w=0&k=20&c=OMQvuuFdE3ck2F3tGrdPTCpLNIyDPAreJIRWGvxgIgg=',
+      trending: false,
+      category: 'Oil Seeds',
+      unit: 'क्विंटल',
+      lastUpdated: '1 hour ago',
+      weeklyData: [5750, 5780, 5800, 5790, 5820, 5800, 5850],
+      monthlyData: [5600, 5700, 5750, 5800, 5850]
+    },
+    {
+      id: '8',
+      name: 'Turmeric',
+      nameHindi: 'हल्दी',
+      currentPrice: 16500,
+      previousPrice: 16200,
+      change: 300,
+      changePercent: 1.85,
+      market: 'Itarsi Mandi',
+      image: 'https://media.gettyimages.com/id/646696672/photo/close-up-of-turmeric.jpg?s=612x612&w=0&k=20&c=HTY0dFeLbYslyOldrplKt_BmmT_ltX43ndbRacKiqGM=',
+      trending: true,
+      category: 'Spices',
+      unit: 'क्विंटल',
+      lastUpdated: '6 hours ago',
+      weeklyData: [15800, 16000, 16200, 16100, 16300, 16200, 16500],
+      monthlyData: [15000, 15500, 16000, 16200, 16500]
+    },
+    {
+      id: '9',
+      name: 'Lentil',
+      nameHindi: 'मसूर',
+      currentPrice: 6100,
+      previousPrice: 6150,
+      change: -50,
+      changePercent: -0.81,
+      market: 'Itarsi Mandi',
+      image: 'https://media.gettyimages.com/id/1715808882/photo/the-lentil-or-masoor-dal-is-an-edible-legume-in-cuisines-of-the-indian-subcontinent-where.jpg?s=612x612&w=0&k=20&c=iq6_tnpzIlaFC0h5tlcgC8f6ceZYEDyGR-iiQrJYWnU=',
+      trending: false,
+      category: 'Pulses',
+      unit: 'क्विंटल',
+      lastUpdated: '2 hours ago',
+      weeklyData: [6200, 6180, 6150, 6160, 6140, 6150, 6100],
+      monthlyData: [6300, 6250, 6200, 6150, 6100]
+    },
+    {
+      id: '10',
+      name: 'Onion',
+      nameHindi: 'प्याज',
+      currentPrice: 2800,
+      previousPrice: 2700,
+      change: 100,
+      changePercent: 3.70,
+      market: 'Itarsi Mandi',
+      image: 'https://media.gettyimages.com/id/171158822/photo/red-onions-background.jpg?s=612x612&w=0&k=20&c=-jkt0464Xku9H0_eSrcz6RJc8TqeQwUFNI2AF9oFGL8=',
+      trending: true,
+      category: 'Vegetables',
+      unit: 'क्विंटल',
+      lastUpdated: '45 mins ago',
+      weeklyData: [2600, 2650, 2700, 2680, 2720, 2700, 2800],
+      monthlyData: [2400, 2500, 2600, 2700, 2800]
+    },
+    {
+      id: '11',
+      name: 'Potato',
+      nameHindi: 'आलू',
+      currentPrice: 1650,
+      previousPrice: 1700,
+      change: -50,
+      changePercent: -2.94,
+      market: 'Itarsi Mandi',
+      image: 'https://media.gettyimages.com/id/1224918845/photo/farmers-market-organic-potatoes.jpg?s=612x612&w=0&k=20&c=OKNglpi8Cc1IG78-jXiws2E-8qNKb7dJGB2nXvdncfM=',
+      trending: false,
+      category: 'Vegetables',
+      unit: 'क्विंटल',
+      lastUpdated: '3 hours ago',
+      weeklyData: [1750, 1720, 1700, 1710, 1680, 1700, 1650],
+      monthlyData: [1800, 1750, 1700, 1680, 1650]
+    },
+    {
+      id: '12',
+      name: 'Garlic',
+      nameHindi: 'लहसुन',
+      currentPrice: 14000,
+      previousPrice: 13800,
+      change: 200,
+      changePercent: 1.45,
+      market: 'Itarsi Mandi',
+      image: 'https://media.gettyimages.com/id/454629131/photo/garlic.jpg?s=612x612&w=0&k=20&c=NSu-Qg1tAZ6mJin_FiKfUCLmIbxoGYeTVMCdEybjvTo=',
+      trending: true,
+      category: 'Spices',
+      unit: 'क्विंटल',
+      lastUpdated: '7 hours ago',
+      weeklyData: [13500, 13600, 13800, 13750, 13850, 13800, 14000],
+      monthlyData: [13000, 13200, 13500, 13800, 14000]
+    },
+    {
+      id: '13',
+      name: 'Coriander',
+      nameHindi: 'धनिया',
+      currentPrice: 7200,
+      previousPrice: 7250,
+      change: -50,
+      changePercent: -0.69,
+      market: 'Itarsi Mandi',
+      image: 'https://media.gettyimages.com/id/170931923/photo/group-on-cilantro-tied-together.jpg?s=612x612&w=0&k=20&c=LwCbYdyJlbyToiB6B51hFLPw_pU9yFjw1pe2Db2X2Zc=',
+      trending: false,
+      category: 'Spices',
+      unit: 'क्विंटल',
+      lastUpdated: '2 hours ago',
+      weeklyData: [7300, 7280, 7250, 7260, 7240, 7250, 7200],
+      monthlyData: [7400, 7350, 7300, 7250, 7200]
+    },
+    {
+      id: '14',
+      name: 'Sugarcane',
+      nameHindi: 'गन्ना',
+      currentPrice: 380,
+      previousPrice: 375,
+      change: 5,
+      changePercent: 1.33,
+      market: 'Itarsi Mandi',
+      image: 'https://media.gettyimages.com/id/182159812/photo/detail-of-sugar-cane.jpg?s=612x612&w=0&k=20&c=8_i2iZugh1ReRjiExIObaqkRHYIaY9u8-4dfqDBJY3o=',
+      trending: false,
+      category: 'Cash Crops',
+      unit: 'क्विंटल',
+      lastUpdated: '8 hours ago',
+      weeklyData: [370, 372, 375, 374, 376, 375, 380],
+      monthlyData: [360, 365, 370, 375, 380]
     }
   ];
 
@@ -338,7 +508,7 @@ export function MarketPage() {
                   <TrendingUp className="w-4 h-4 mr-2" />
                   <span className="font-medium">तेजी</span>
                 </div>
-                <p className="text-sm text-green-600">सोयाबीन की कीमतों में वृद्धि</p>
+                <p className="text-sm text-green-600">सोयाबीन और मसालों की कीमतों में वृद्धि</p>
               </div>
               
               <div className="p-3 bg-red-50 rounded-lg">
@@ -346,7 +516,7 @@ export function MarketPage() {
                   <TrendingDown className="w-4 h-4 mr-2" />
                   <span className="font-medium">मंदी</span>
                 </div>
-                <p className="text-sm text-red-600">गेहूं की मांग में कमी</p>
+                <p className="text-sm text-red-600">गेहूं और दालों की मांग में कमी</p>
               </div>
 
               <div className="p-3 bg-blue-50 rounded-lg">
@@ -354,7 +524,7 @@ export function MarketPage() {
                   <Calendar className="w-4 h-4 mr-2" />
                   <span className="font-medium">मौसमी सुझाव</span>
                 </div>
-                <p className="text-sm text-blue-600">रबी की तैयारी का समय</p>
+                <p className="text-sm text-blue-600">रबी की तैयारी का समय, बुवाई की योजना बनाएं</p>
               </div>
             </CardContent>
           </Card>
